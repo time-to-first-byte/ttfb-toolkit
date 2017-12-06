@@ -73,6 +73,7 @@ function ttfb_toolkit_customizer_font_awesome( $wp_customize ) {
         'priority' => 30,
         'section' => 'ttfb_toolkit_fa',
         'label' => __( 'Font Awesome Library', 'faster-font-awesome' ),
+        'description' => __('Complete icons list available on the <a href="https://fontawesome.com/icons/" target="_blank">Font Awesome</a> website.'),
         'choices'  => array(
 			'solid'  => 'Solid',
             'regular' => 'Regular',
