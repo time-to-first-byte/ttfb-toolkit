@@ -1,2 +1,2 @@
-# ttfb-add-on
-Simple WordPress Plugin to extend TTFB's themes functionalities.
+# TTFB Toolkit
+The TTFB Toolkit extends functionality to TTFB Themes, providing Font Awesome icons, alerts and more.
