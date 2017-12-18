@@ -6,13 +6,14 @@
  */
 add_action( "customize_register", "ttfb_toolkit_customizer_alerts");
 function ttfb_toolkit_customizer_alerts( $wp_customize ) {
+
     /*
     * Alerts Section
     */
     $wp_customize->add_section( 'ttfb_toolkit_alerts', array(
         'title'      => esc_attr__( 'Alerts', 'minimall' ),
-        'priority'   => 10,
-        'panel'		 => 'ttfb_toolkit',
+        'priority'   => 200,
+        'panel'		 => 'ttfb_options',
         'capability' => 'edit_theme_options',
     ) );
 
@@ -71,7 +72,7 @@ function ttfb_toolkit_alert_shortcodes_callback($atts){
         $class = '';
     }
 
-    $alert = '<div class="alert '. $class .'">';
+    $alert = '<div class="alert_shortcode '. $class .'">';
 
         if( !empty( $icon ) ){
             $alert .= '<div class="icon_box">'.$icon.'</div>';
@@ -98,6 +99,6 @@ function ttfb_toolkit_alert_shortcodes_callback($atts){
 add_action( 'wp_enqueue_scripts', 'ttfb_toolkit_alerts_style' );
 function ttfb_toolkit_alerts_style() {
     if( get_option('ttfb_toolkit_alerts_active',false) ){
-        wp_enqueue_style( 'ttfb-toolkit-alerts', plugin_dir_url( __FILE__ ) . 'assets/css/alerts.css' );
+        wp_enqueue_style( 'ttfb-toolkit-alerts', plugin_dir_url( __FILE__ ) . '../assets/css/alerts.min.css' );
     }
 }

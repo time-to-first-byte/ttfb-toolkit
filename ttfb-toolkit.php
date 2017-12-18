@@ -29,32 +29,13 @@ function ttfb_toolkit_init(){
 }
 
 /**
- * Create customizer TTFB Toolkit panel
- *
- * @param WP_Customize_Manager $wp_customize Theme Customizer object.
- */
-add_action( "customize_register", "ttfb_toolkit_customizer_default_panel");
-function ttfb_toolkit_customizer_default_panel( $wp_customize ) {
-
-    /*
-    * TTFB Toolkit Panel
-    */
-    $wp_customize->add_panel( 'ttfb_toolkit', array(
-        'priority' => 400,
-        'capability' => 'edit_theme_options',
-        'title'      => esc_attr__( 'TTFB Toolkit', 'ttfb-toolkit' ),
-        'description' => '',
-    ) );
-}
-
-/**
  * TTFB Toolkit Customizer Styles
  */
 add_action( 'customize_controls_print_styles', 'ttfb_toolkit_customizer_styles', 999 );
 function ttfb_toolkit_customizer_styles() { ?>
 	<style>
-        li#accordion-panel-ttfb_toolkit > h3.accordion-section-title:before {
-            content: "\f180";
+        li#accordion-panel-ttfb_toolkit_performance > h3.accordion-section-title:before {
+            content: "\f311";
             font-family: dashicons;
             padding: 0 3px 0 0;
             vertical-align: middle;
@@ -66,12 +47,22 @@ function ttfb_toolkit_customizer_styles() { ?>
 }
 
 /**
+ * Custom HTML Control
+ */
+require 'includes/controls/html-control.php';
+
+/**
  * Alerts
  */
-require 'alerts.php';
+require 'includes/alerts.php';
 
 /**
  * Font Awesome
  */
-require 'font-awesome.php';
+require 'includes/font-awesome.php';
+
+/**
+ * Performance
+ */
+require 'performance/performance-init.php';
 

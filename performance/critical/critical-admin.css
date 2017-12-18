@@ -1,0 +1,20 @@
+.admin-bar .main-header {
+  top: 46px;
+}
+
+.admin-bar .nav-container {
+    top: 0;
+    z-index: 999999;
+}
+
+@media screen and (min-width: 783px) {
+    .admin-bar .main-header {
+        top: 32px;
+    }
+}
+
+@media (min-width: 1200px){
+    .admin-bar .nav-container {
+        top: 32px;
+    }
+}
