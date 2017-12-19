@@ -41,28 +41,12 @@ function ttfb_toolkit_customizer_performance_preload( $wp_customize ) {
  * Add preload section
  * 
  */
-/*Minimall_Kirki::add_section( 'performance_preload', array(
-    'title'      => esc_attr__( 'Preload Links', 'minimall' ),
-    'priority'   => 10,
-    'panel'		 => 'performance',
-    'capability' => 'edit_theme_options',
-) );
-
-Minimall_Kirki::add_field( 'minimall', array(
-    'type'        => 'checkbox',
-    'settings'    => 'performance_activate_preload',
-    'label'       => __( 'Activate Link Preload', 'minimall' ),
-    'description' => __( 'By enabling this option, you will improve the loading time on modern browsers.', 'minimall' ),
-    'section'     => 'performance_preload',
-    'default'     => '0',
-    'priority'    => 10,
-) );*/
 
 /*
 * Preload
 */
-add_action('minimall_head_open','minimall_do_preload',5);
-function minimall_do_preload(){
+add_action('minimall_head_open','ttfb_toolkit_do_preload',5);
+function ttfb_toolkit_do_preload(){
     if( get_option('ttfb_toolkit_perf_preload',false) ){
         do_action('ttfb_toolkit_preload');
     }
