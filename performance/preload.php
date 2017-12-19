@@ -56,7 +56,7 @@ function ttfb_toolkit_do_preload(){
 * Preload jQuery if detected
 */
 //add_action('ttfb_toolkit_preload','minimall_add_jquery_preload',10);
-function minimall_add_jquery_preload(){
+function ttfb_toolkit_add_jquery_preload(){
     if( get_option('ttfb_toolkit_perf_preload',false) &&
     wp_script_is( 'jquery', 'enqueued' ) ){
         //echo '<link rel="preload" as="script" href="' . esc_url( $images['lg'] ) . '">' . PHP_EOL;
