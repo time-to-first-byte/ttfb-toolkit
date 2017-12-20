@@ -12,7 +12,7 @@
  * Plugin Name:       TTFB Toolkit
  * Plugin URI:        https://github.com/time-to-first-byte/ttfb-toolkit
  * Description:       The TTFB Toolkit extends functionality to TTFB Themes, providing Font Awesome icons, alerts and more.
- * Version:           0.1
+ * Version:           1.0
  * Author:            TTFB
  * Author URI:        eric@ttfb.io
  * License:           GPLv2+
