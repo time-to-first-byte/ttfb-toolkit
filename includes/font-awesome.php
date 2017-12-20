@@ -10,7 +10,7 @@ function ttfb_toolkit_customizer_font_awesome( $wp_customize ) {
     * Font Awesome Section
     */
     $wp_customize->add_section( 'ttfb_toolkit_fa', array(
-        'title'      => esc_attr__( 'Font Awesome Icons', 'minimall' ),
+        'title'      => esc_attr__( 'Font Awesome Icons', 'ttfb-toolkit' ),
         'priority'   => 210,
         'panel'		 => 'ttfb_options',
         'capability' => 'edit_theme_options',

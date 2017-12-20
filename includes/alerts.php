@@ -11,7 +11,7 @@ function ttfb_toolkit_customizer_alerts( $wp_customize ) {
     * Alerts Section
     */
     $wp_customize->add_section( 'ttfb_toolkit_alerts', array(
-        'title'      => esc_attr__( 'Alerts', 'minimall' ),
+        'title'      => esc_attr__( 'Alerts', 'ttfb-toolkit' ),
         'priority'   => 200,
         'panel'		 => 'ttfb_options',
         'capability' => 'edit_theme_options',

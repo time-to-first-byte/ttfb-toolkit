@@ -45,7 +45,7 @@ function ttfb_toolkit_customizer_performance_preload( $wp_customize ) {
 /*
 * Preload
 */
-add_action('minimall_head_open','ttfb_toolkit_do_preload',5);
+add_action('ttfb_toolkit_head_open','ttfb_toolkit_do_preload',5);
 function ttfb_toolkit_do_preload(){
     if( get_option('ttfb_toolkit_perf_preload',false) ){
         do_action('ttfb_toolkit_preload');
@@ -55,7 +55,7 @@ function ttfb_toolkit_do_preload(){
 /*
 * Preload jQuery if detected
 */
-//add_action('ttfb_toolkit_preload','minimall_add_jquery_preload',10);
+//add_action('ttfb_toolkit_preload','ttfb_toolkit_add_jquery_preload',10);
 function ttfb_toolkit_add_jquery_preload(){
     if( get_option('ttfb_toolkit_perf_preload',false) &&
     wp_script_is( 'jquery', 'enqueued' ) ){
