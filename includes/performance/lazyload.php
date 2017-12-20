@@ -54,15 +54,6 @@ function ttfb_toolkit_customizer_performance_lazyload( $wp_customize ) {
     ) );
 }
 
-/**
- * Enqueue lazy load script.
- */
-add_action( 'wp_enqueue_scripts', 'ttfb_toolkit_lazyload_scripts' );
-function ttfb_toolkit_lazyload_scripts() {
-    // Load no matter what because the script used for hero images
-    wp_enqueue_script( 'ttfb-toolkit-lazysizes', get_template_directory_uri() . '/includes/vendors/lazysizes/lazysizes-all.min.js', '', '', true );
-}
-
 /*
 * AMP Detection
 */
