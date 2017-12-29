@@ -229,17 +229,12 @@ function ttfb_toolkit_lazyload_iframes( $html ) {
 
 add_action("wp_head","ttfb_toolkit_lazyload_picturefill");
 function ttfb_toolkit_lazyload_picturefill(){
-    if( 
-        ( ! get_option('ttfb_toolkit_perf_lazyload_img', false) && ! get_option('ttfb_toolkit_perf_lazyload_iframe', false) ) || 
-        ( !apply_filters('do_ttfb_toolkit_lazyload_image', true) && !apply_filters('do_ttfb_toolkit_lazyload_iframe', true) ) ) {
-		return;
-    }
 ?>
 <script>
     // Lazyload picturefill
     function ttfb_toolkit_loadJS(u){var r=document.getElementsByTagName("script")[ 0 ],s=document.createElement("script");s.src=u;r.parentNode.insertBefore(s,r);}
     if (!window.HTMLPictureElement || document.msElementsFromPoint) {
-        ttfb_toolkit_loadJS('<?php echo trailingslashit( get_template_directory_uri() ) . "includes/vendors/lazysizes/plugins/respimg/ls.respimg.min.js"; ?>');
+        ttfb_toolkit_loadJS('<?php echo TTFB_TOOLKIT_URI . "vendor/lazysizes/plugins/respimg/ls.respimg.min.js"; ?>');
     }
 </script>
 <?php
