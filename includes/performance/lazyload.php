@@ -72,15 +72,28 @@ function ttfb_toolkit_is_rest() {
 }
 
 /*
-* Detect on page lazyload disabled
+* Detect on page lazyload disabled for image
 */
-add_action('wp', 'ttfb_toolkit_on_page_lazyload_off');
-function ttfb_toolkit_on_page_lazyload_off(){
+add_action('wp', 'ttfb_toolkit_on_page_lazyload_image_disabled');
+function ttfb_toolkit_on_page_lazyload_image_disabled(){
     if( !is_page() && !is_single() ){ return; }
 
     global $post;
     if( is_object( $post ) && get_post_meta($post->ID, 'ttfb_toolkit_options_disable_image_lazy_load', true) ){
-        add_filter( 'do_ttfb_toolkit_lazyload', '__return_false' ); 
+        add_filter( 'do_ttfb_toolkit_lazyload_image', '__return_false' ); 
+    }
+}
+
+/*
+* Detect on page lazyload disabled for iframe
+*/
+add_action('wp', 'ttfb_toolkit_on_page_lazyload_iframe_disabled');
+function ttfb_toolkit_on_page_lazyload_iframe_disabled(){
+    if( !is_page() && !is_single() ){ return; }
+
+    global $post;
+    if( is_object( $post ) && get_post_meta($post->ID, 'ttfb_toolkit_options_disable_iframe_lazy_load', true) ){
+        add_filter( 'do_ttfb_toolkit_lazyload_iframe', '__return_false' ); 
     }
 }
 
@@ -98,7 +111,7 @@ add_filter( 'post_thumbnail_html'	, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX 
 function ttfb_toolkit_lazy_load_image( $content ){
 
     if ( ! get_option('ttfb_toolkit_perf_lazyload_img', false) || 
-            ! apply_filters( 'do_ttfb_toolkit_lazyload', true ) ||
+            ! apply_filters( 'do_ttfb_toolkit_lazyload_image', true ) ||
             is_admin() ||
             ttfb_toolkit_is_rest() ) {
         return $content;
@@ -179,44 +192,45 @@ function ttfb_toolkit_lazy_load_image( $content ){
  * Replace iframes by LazyLoad
  */
 add_filter( 'the_content', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
-add_filter( 'widget_text', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
+//add_filter( 'widget_text', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
 function ttfb_toolkit_lazyload_iframes( $html ) {
 
     if ( ! get_option('ttfb_toolkit_perf_lazyload_iframe', false) || 
-        ! apply_filters( 'do_ttfb_toolkit_lazyload', true ) ||
+        ! apply_filters( 'do_ttfb_toolkit_lazyload_iframe', true ) ||
         is_search() ||
         is_admin() ) {
     return $html;
     }
-
-	global $post;
 
     $matches = array();
     preg_match_all( '/<iframe\s+.*?>/', $html, $matches );
 
     foreach ( $matches[0] as $k=>$iframe ) {
 
-        // Don't mess with the Gravity Forms ajax iframe
-        if ( strpos( $iframe, 'gform_ajax_frame' ) ) {
+        
+        if ( strpos( $iframe, 'gform_ajax_frame' ) || // Don't mess with the Gravity Forms ajax iframe
+        strpos( $iframe, 'data-src' ) ) { // Don't mess with already lazy iframe
             continue;
         }
 
         $placeholder = 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=';
 
-        $iframe = preg_replace( '/<iframe(.*?)src=/is', '<iframe$1src="' . $placeholder . '" class="lazyload blur-up" data-src=', $iframe );
+        $iframe = preg_replace( '/<iframe(.*?)src=/is', '<iframe$1src="' . $placeholder . '" class="lazyload" data-src=', $iframe );
 
         $html = str_replace( $matches[0][ $k ], $iframe, $html );
 
     }
 	
 
-	return $html;
+    return $html;
 }
 
 
 add_action("wp_head","ttfb_toolkit_lazyload_picturefill");
 function ttfb_toolkit_lazyload_picturefill(){
-    if ( ( ! get_option('ttfb_toolkit_perf_lazyload_img', false) && ! get_option('ttfb_toolkit_perf_lazyload_iframe', false) ) || ! apply_filters( 'do_ttfb_toolkit_lazyload', true ) ) {
+    if( 
+        ( ! get_option('ttfb_toolkit_perf_lazyload_img', false) && ! get_option('ttfb_toolkit_perf_lazyload_iframe', false) ) || 
+        ( !apply_filters('do_ttfb_toolkit_lazyload_image', true) && !apply_filters('do_ttfb_toolkit_lazyload_iframe', true) ) ) {
 		return;
     }
 ?>
