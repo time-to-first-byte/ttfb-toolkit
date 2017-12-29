@@ -18,6 +18,24 @@ function ttfb_toolkit_customizer_performance( $wp_customize ) {
 }
 
 /**
+ * Performance Panel Customizer Styles
+ */
+add_action( 'customize_controls_print_styles', 'ttfb_toolkit_performance_panel_styles', 999 );
+function ttfb_toolkit_performance_panel_styles() { ?>
+	<style>
+        li#accordion-panel-ttfb_toolkit_performance > h3.accordion-section-title:before {
+            content: "\f226";
+            font-family: dashicons;
+            padding: 0 3px 0 0;
+            vertical-align: middle;
+            font-size: 22px;
+            line-height: 1;
+        }
+	</style>
+	<?php
+}
+
+/**
  * Lazy Load for image and iframe
  */
 require 'lazyload.php';
