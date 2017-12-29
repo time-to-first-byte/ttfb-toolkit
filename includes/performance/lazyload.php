@@ -192,13 +192,14 @@ function ttfb_toolkit_lazy_load_image( $content ){
  * Replace iframes by LazyLoad
  */
 add_filter( 'the_content', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
-//add_filter( 'widget_text', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
+add_filter( 'widget_text', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
 function ttfb_toolkit_lazyload_iframes( $html ) {
 
     if ( ! get_option('ttfb_toolkit_perf_lazyload_iframe', false) || 
         ! apply_filters( 'do_ttfb_toolkit_lazyload_iframe', true ) ||
         is_search() ||
-        is_admin() ) {
+        is_admin() ||
+        ttfb_toolkit_is_rest() ) {
     return $html;
     }
 
