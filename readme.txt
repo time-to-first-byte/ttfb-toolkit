@@ -5,7 +5,7 @@ Tags: widgets, icons, share, performance, speed
 License: GPLv2 or later
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ All options are located in the WordPress Customizer. Check out your theme's help
 The TTFB Toolkit was developed to extend the functionality of TTFB themes specifically. It will not work with other themes out of the box.
 
 ==Changelog==
+= v1.1 - December 29, 2017 =
+* Fix - Iframe lazy load.
+* Fix - Add missing performance icon
+
 = v1.0 - December 20, 2017 =
 * Original Release.
 
