@@ -27,7 +27,7 @@ class Ttfb_Toolkit_Spacing_Widget extends WP_Widget {
     echo $args['before_widget'];
     
     if ( !empty($instance['space']) ) {
-        echo '<div class="clearfix p'. $instance['space'] .'"></div>';
+        echo '<div class="clearfix p'. esc_attr( $instance['space'] ) .'"></div>';
     }
     
     echo $args['after_widget'];

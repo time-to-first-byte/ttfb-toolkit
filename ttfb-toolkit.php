@@ -100,6 +100,11 @@ class Ttfb_Toolkit {
          * Spacing Widget
          */
         require_if_theme_supports( 'ttfb_toolkit_spacing_widget', TTFB_TOOLKIT_INCLUDES . 'spacing/widget.php' );
+
+        /**
+         * Social Widget
+         */
+        require_if_theme_supports( 'ttfb_toolkit_social_widget', TTFB_TOOLKIT_INCLUDES . 'social/widget.php' );
     }
 
     /**
