@@ -72,7 +72,7 @@ function ttfb_toolkit_alert_shortcodes_callback($atts){
         $class = '';
     }
 
-    $alert = '<div class="alert_shortcode '. $class .'">';
+    $alert = '<div class="alert_shortcode fit'. $class .'">';
 
         if( !empty( $icon ) ){
             $alert .= '<div class="icon_box">'.$icon.'</div>';

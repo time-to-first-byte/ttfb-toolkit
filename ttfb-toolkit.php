@@ -95,6 +95,11 @@ class Ttfb_Toolkit {
          * Author Widget
          */
         require_if_theme_supports( 'ttfb_toolkit_author_widget', TTFB_TOOLKIT_INCLUDES . 'author/widget.php' );
+
+        /**
+         * Spacing Widget
+         */
+        require_if_theme_supports( 'ttfb_toolkit_spacing_widget', TTFB_TOOLKIT_INCLUDES . 'spacing/widget.php' );
     }
 
     /**
