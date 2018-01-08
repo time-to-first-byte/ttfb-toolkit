@@ -33,7 +33,7 @@ function ttfb_toolkit_customizer_performance_debug( $wp_customize ) {
         'priority' => 10,
         'section' => 'ttfb_toolkit_performance_debug',
         'label' => __( 'Activate Performance Timing API', 'ttfb-toolkit' ),
-        'description' => __( 'Navigation Timing API measurement in DevTools. It helps debug performance issues. Activate in a development environment only.' , 'ttfb-toolkit' ),
+        'description' => __( 'Navigation Timing API in DevTools. This option helps debug performance issues. Activate in a development environment only.' , 'ttfb-toolkit' ),
     ) );
 }
 
@@ -66,11 +66,8 @@ function ttfb_toolkit_perf_debug_enqueue_script() {
                     // Network Latency
                     //console.log( "Network Latency: " + networklatency );
 
-
-                    
                     //console.table( timing.getTimes() );
                     //timing.printSimpleTable();
-
                     
                 }, 0);
             }
@@ -82,6 +79,6 @@ function ttfb_toolkit_perf_debug_enqueue_script() {
             // Speed Index
             var speedIndexResult = RUMSpeedIndex();
             console.log( "Speed Index (lower is better): " + Math.round(speedIndexResult) );
-    ' );
+        ' );
     }
 }

@@ -119,10 +119,10 @@ class Ttfb_Toolkit_Social_Widget extends WP_Widget {
     extract( wp_parse_args( ( array ) $instance, $defaults ) );
     
     if ( isset($instance['title']) ) {
-      $lminimall_title = $instance['title'];
+      $title = $instance['title'];
     }
     else {
-      $lminimall_title = __( 'Follow us', 'ttfb-toolkit' );
+      $title = __( 'Follow us', 'ttfb-toolkit' );
     }
     ?>
     <p>
@@ -133,71 +133,71 @@ class Ttfb_Toolkit_Social_Widget extends WP_Widget {
         <?php // Network 1 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_1_icon' ) ); ?>"><?php _e( 'Network 1', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_1_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_1_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_1_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_1_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_1_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_1_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_1_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_1_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_1_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_1_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_1_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_1_link ); ?>" />
         </p>
 
         <?php // Network 2 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_2_icon' ) ); ?>"><?php _e( 'Network 2', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_2_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_2_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_2_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_2_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_2_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_2_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_2_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_2_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_2_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_2_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_2_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_2_link ); ?>" />
         </p>
 
         <?php // Network 3 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_3_icon' ) ); ?>"><?php _e( 'Network 3', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_3_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_3_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_3_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_3_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_3_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_3_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_3_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_3_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_3_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_3_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_3_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_3_link ); ?>" />
         </p>
 
         <?php // Network 4 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_4_icon' ) ); ?>"><?php _e( 'Network 4', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_4_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_4_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_4_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_4_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_4_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_4_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_4_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_4_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_4_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_4_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_4_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_4_link ); ?>" />
         </p>
 
         <?php // Network 5 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_5_icon' ) ); ?>"><?php _e( 'Network 5', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_5_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_5_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_5_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_5_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_5_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_5_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_5_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_5_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_5_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_5_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_5_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_5_link ); ?>" />
         </p>
 
         <?php // Network 6 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_6_icon' ) ); ?>"><?php _e( 'Network 6', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_6_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_6_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_6_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_6_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_6_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_6_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_6_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_6_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_6_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_6_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_6_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_6_link ); ?>" />
         </p>
 
         <?php // Network 7 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_7_icon' ) ); ?>"><?php _e( 'Network 7', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_7_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_7_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_7_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_7_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_7_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_7_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_7_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_7_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_7_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_7_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_7_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_7_link ); ?>" />
         </p>
 
         <?php // Network 8 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_8_icon' ) ); ?>"><?php _e( 'Network 8', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_8_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_8_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_8_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_8_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_8_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_8_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_8_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_8_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_8_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_8_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_8_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_8_link ); ?>" />
         </p>
 
         <?php // Network 9 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_9_icon' ) ); ?>"><?php _e( 'Network 9', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_9_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_9_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_9_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_9_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_9_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_9_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_9_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_9_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_9_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_9_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_9_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_9_link ); ?>" />
         </p>
 
         <?php // Network 10 ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'network_10_icon' ) ); ?>"><?php _e( 'Network 10', 'ttfb-toolkit' ); ?>:</label>
-            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_10_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_10_icon' ) ); ?>" type="text" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;','minimall'); ?>"><?php echo wp_kses_post( $network_10_icon ); ?></textarea>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_10_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_10_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://','minimall'); ?>" value="<?php echo esc_attr( $network_10_link ); ?>" />
+            <textarea style="margin-bottom: 0.5rem;" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_10_icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_10_icon' ) ); ?>" placeholder="<?php echo esc_attr('&lt;i class=""&gt;&lt;/i&gt;'); ?>"><?php echo wp_kses_post( $network_10_icon ); ?></textarea>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'network_10_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'network_10_link' ) ); ?>" type="url" placeholder="<?php echo esc_attr('https://'); ?>" value="<?php echo esc_attr( $network_10_link ); ?>" />
         </p>
     <?php
   }
@@ -213,50 +213,50 @@ class Ttfb_Toolkit_Social_Widget extends WP_Widget {
    * @return array Updated safe values to be saved.
    */
   public function update( $new_instance, $old_instance ) {
-    $lminimall_instance = array();
-    $lminimall_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    $instance = array();
+    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
     // Network 1
-    $lminimall_instance['network_1_icon'] = ( ! empty( $new_instance['network_1_icon'] ) ) ? wp_kses_post( $new_instance['network_1_icon'] ) : '';
-    $lminimall_instance['network_1_link'] = ( ! empty( $new_instance['network_1_link'] ) ) ? strip_tags( $new_instance['network_1_link'] ) : '';
+    $instance['network_1_icon'] = ( ! empty( $new_instance['network_1_icon'] ) ) ? wp_kses_post( $new_instance['network_1_icon'] ) : '';
+    $instance['network_1_link'] = ( ! empty( $new_instance['network_1_link'] ) ) ? strip_tags( $new_instance['network_1_link'] ) : '';
 
     // Network 2
-    $lminimall_instance['network_2_icon'] = ( ! empty( $new_instance['network_2_icon'] ) ) ? wp_kses_post( $new_instance['network_2_icon'] ) : '';
-    $lminimall_instance['network_2_link'] = ( ! empty( $new_instance['network_2_link'] ) ) ? strip_tags( $new_instance['network_2_link'] ) : '';
+    $instance['network_2_icon'] = ( ! empty( $new_instance['network_2_icon'] ) ) ? wp_kses_post( $new_instance['network_2_icon'] ) : '';
+    $instance['network_2_link'] = ( ! empty( $new_instance['network_2_link'] ) ) ? strip_tags( $new_instance['network_2_link'] ) : '';
 
     // Network 3
-    $lminimall_instance['network_3_icon'] = ( ! empty( $new_instance['network_3_icon'] ) ) ? wp_kses_post( $new_instance['network_3_icon'] ) : '';
-    $lminimall_instance['network_3_link'] = ( ! empty( $new_instance['network_3_link'] ) ) ? strip_tags( $new_instance['network_3_link'] ) : '';
+    $instance['network_3_icon'] = ( ! empty( $new_instance['network_3_icon'] ) ) ? wp_kses_post( $new_instance['network_3_icon'] ) : '';
+    $instance['network_3_link'] = ( ! empty( $new_instance['network_3_link'] ) ) ? strip_tags( $new_instance['network_3_link'] ) : '';
 
     // Network 4
-    $lminimall_instance['network_4_icon'] = ( ! empty( $new_instance['network_4_icon'] ) ) ? wp_kses_post( $new_instance['network_4_icon'] ) : '';
-    $lminimall_instance['network_4_link'] = ( ! empty( $new_instance['network_4_link'] ) ) ? strip_tags( $new_instance['network_4_link'] ) : '';
+    $instance['network_4_icon'] = ( ! empty( $new_instance['network_4_icon'] ) ) ? wp_kses_post( $new_instance['network_4_icon'] ) : '';
+    $instance['network_4_link'] = ( ! empty( $new_instance['network_4_link'] ) ) ? strip_tags( $new_instance['network_4_link'] ) : '';
 
     // Network 5
-    $lminimall_instance['network_5_icon'] = ( ! empty( $new_instance['network_5_icon'] ) ) ? wp_kses_post( $new_instance['network_5_icon'] ) : '';
-    $lminimall_instance['network_5_link'] = ( ! empty( $new_instance['network_5_link'] ) ) ? strip_tags( $new_instance['network_5_link'] ) : '';
+    $instance['network_5_icon'] = ( ! empty( $new_instance['network_5_icon'] ) ) ? wp_kses_post( $new_instance['network_5_icon'] ) : '';
+    $instance['network_5_link'] = ( ! empty( $new_instance['network_5_link'] ) ) ? strip_tags( $new_instance['network_5_link'] ) : '';
 
     // Network 6
-    $lminimall_instance['network_6_icon'] = ( ! empty( $new_instance['network_6_icon'] ) ) ? wp_kses_post( $new_instance['network_6_icon'] ) : '';
-    $lminimall_instance['network_6_link'] = ( ! empty( $new_instance['network_6_link'] ) ) ? strip_tags( $new_instance['network_6_link'] ) : '';
+    $instance['network_6_icon'] = ( ! empty( $new_instance['network_6_icon'] ) ) ? wp_kses_post( $new_instance['network_6_icon'] ) : '';
+    $instance['network_6_link'] = ( ! empty( $new_instance['network_6_link'] ) ) ? strip_tags( $new_instance['network_6_link'] ) : '';
 
     // Network 7
-    $lminimall_instance['network_7_icon'] = ( ! empty( $new_instance['network_7_icon'] ) ) ? wp_kses_post( $new_instance['network_7_icon'] ) : '';
-    $lminimall_instance['network_7_link'] = ( ! empty( $new_instance['network_7_link'] ) ) ? strip_tags( $new_instance['network_7_link'] ) : '';
+    $instance['network_7_icon'] = ( ! empty( $new_instance['network_7_icon'] ) ) ? wp_kses_post( $new_instance['network_7_icon'] ) : '';
+    $instance['network_7_link'] = ( ! empty( $new_instance['network_7_link'] ) ) ? strip_tags( $new_instance['network_7_link'] ) : '';
 
     // Network 8
-    $lminimall_instance['network_8_icon'] = ( ! empty( $new_instance['network_8_icon'] ) ) ? wp_kses_post( $new_instance['network_8_icon'] ) : '';
-    $lminimall_instance['network_8_link'] = ( ! empty( $new_instance['network_8_link'] ) ) ? strip_tags( $new_instance['network_8_link'] ) : '';
+    $instance['network_8_icon'] = ( ! empty( $new_instance['network_8_icon'] ) ) ? wp_kses_post( $new_instance['network_8_icon'] ) : '';
+    $instance['network_8_link'] = ( ! empty( $new_instance['network_8_link'] ) ) ? strip_tags( $new_instance['network_8_link'] ) : '';
 
     // Network 9
-    $lminimall_instance['network_9_icon'] = ( ! empty( $new_instance['network_9_icon'] ) ) ? wp_kses_post( $new_instance['network_9_icon'] ) : '';
-    $lminimall_instance['network_9_link'] = ( ! empty( $new_instance['network_9_link'] ) ) ? strip_tags( $new_instance['network_9_link'] ) : '';
+    $instance['network_9_icon'] = ( ! empty( $new_instance['network_9_icon'] ) ) ? wp_kses_post( $new_instance['network_9_icon'] ) : '';
+    $instance['network_9_link'] = ( ! empty( $new_instance['network_9_link'] ) ) ? strip_tags( $new_instance['network_9_link'] ) : '';
 
     // Network 10
-    $lminimall_instance['network_10_icon'] = ( ! empty( $new_instance['network_10_icon'] ) ) ? wp_kses_post( $new_instance['network_10_icon'] ) : '';
-    $lminimall_instance['network_10_link'] = ( ! empty( $new_instance['network_10_link'] ) ) ? strip_tags( $new_instance['network_10_link'] ) : '';
+    $instance['network_10_icon'] = ( ! empty( $new_instance['network_10_icon'] ) ) ? wp_kses_post( $new_instance['network_10_icon'] ) : '';
+    $instance['network_10_link'] = ( ! empty( $new_instance['network_10_link'] ) ) ? strip_tags( $new_instance['network_10_link'] ) : '';
 
-    return $lminimall_instance;
+    return $instance;
   }
 
 } // class Ttfb_Toolkit_Social_Widget

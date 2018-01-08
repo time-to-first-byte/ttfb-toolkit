@@ -107,6 +107,11 @@ class Ttfb_Toolkit {
         require_if_theme_supports( 'ttfb_toolkit_social_widget', TTFB_TOOLKIT_INCLUDES . 'social/widget.php' );
 
         /**
+         * Address Widget
+         */
+        require_if_theme_supports( 'ttfb_toolkit_address_widget', TTFB_TOOLKIT_INCLUDES . 'address/widget.php' );
+
+        /**
          * Performance Debug
          */
         require_if_theme_supports( 'ttfb_toolkit_debug_widget', TTFB_TOOLKIT_INCLUDES . 'debug/performance-debug.php' );
