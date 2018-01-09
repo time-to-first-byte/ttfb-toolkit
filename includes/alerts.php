@@ -53,29 +53,13 @@ function ttfb_toolkit_alert_shortcodes_callback($atts){
         'type' => "",
         'title' => "",
         'content' => "",
+        'icon' => "",
     ), $atts));
 
-    if( $type == 'info' ){
-        $icon = '<i class="fas fa-lightbulb fa-2x fa-fw animated infinite pulseOpacity icon"></i>';
-        $class = 'alert_info';
-    }elseif( $type == 'warning' ){
-        $icon = '<i class="fas fa-exclamation-triangle fa-2x fa-fw animated infinite pulseOpacity icon"></i>';
-        $class = 'alert_warning';
-    }elseif( $type == 'danger' ){
-        $icon = '<i class="fas fa-exclamation-triangle fa-2x fa-fw animated infinite pulseOpacity icon"></i>';
-        $class = 'alert_danger';
-    }elseif( $type == 'sucess' ){
-        $icon = '<i class="fas fa-check-circle fa-2x fa-fw animated infinite pulseOpacity icon"></i>';
-        $class = 'alert_sucess';
-    }else{
-        $icon = '';
-        $class = '';
-    }
-
-    $alert = '<div class="alert_shortcode fit'. $class .'">';
+    $alert = '<div class="alert_shortcode fit '. $type .'">';
 
         if( !empty( $icon ) ){
-            $alert .= '<div class="icon_box">'.$icon.'</div>';
+            $alert .= '<div class="icon_box"><i class="'.$icon.'"></i></div>';
         }
 
         $alert .= '<div class="content_box">';
