@@ -3,7 +3,7 @@
 Plugin Name:       TTFB Toolkit
 Plugin URI:        https://github.com/time-to-first-byte/ttfb-toolkit
 Description:       The TTFB Toolkit extends functionality to TTFB Themes, providing Font Awesome icons, alerts and more.
-Version:           1.1.1
+Version:           1.2
 Author:            TTFB
 */
 
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit();
 
 
 // Toolkit version
-define( 'TTFB_TOOLKIT_VERSION', '1.0' );
+define( 'TTFB_TOOLKIT_VERSION', '1.2' );
 
 // Toolkit root directory
 define( 'TTFB_TOOLKIT_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
@@ -95,6 +95,26 @@ class Ttfb_Toolkit {
          * Author Widget
          */
         require_if_theme_supports( 'ttfb_toolkit_author_widget', TTFB_TOOLKIT_INCLUDES . 'author/widget.php' );
+
+        /**
+         * Spacing Widget
+         */
+        require_if_theme_supports( 'ttfb_toolkit_spacing_widget', TTFB_TOOLKIT_INCLUDES . 'spacing/widget.php' );
+
+        /**
+         * Social Widget
+         */
+        require_if_theme_supports( 'ttfb_toolkit_social_widget', TTFB_TOOLKIT_INCLUDES . 'social/widget.php' );
+
+        /**
+         * Address Widget
+         */
+        require_if_theme_supports( 'ttfb_toolkit_address_widget', TTFB_TOOLKIT_INCLUDES . 'address/widget.php' );
+
+        /**
+         * Performance Debug
+         */
+        require_if_theme_supports( 'ttfb_toolkit_debug_widget', TTFB_TOOLKIT_INCLUDES . 'debug/performance-debug.php' );
     }
 
     /**

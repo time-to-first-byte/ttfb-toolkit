@@ -5,7 +5,7 @@ Tags: widgets, icons, share, performance, speed
 License: GPLv2 or later
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,13 @@ All options are located in the WordPress Customizer. Check out your theme's help
 The TTFB Toolkit was developed to extend the functionality of TTFB themes specifically. It will not work with other themes out of the box.
 
 ==Changelog==
+= v1.2 - January 9, 2017 =
+* New Feature - Debug performance panel
+* New Feature - Address Widget
+* New Feature - Social Widget
+* New Feature - Spacing Widget
+* Tweak - Alerts: add a param for the icon
+
 = v1.1.1 - December 29, 2017 =
 * Fix - Exclude the Rest API from lazyloading.
 
