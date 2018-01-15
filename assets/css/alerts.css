@@ -38,6 +38,8 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 }
 
+.alert_shortcode .content_box p{ margin: 0; }
+
 .alert_info{ 
     background-color: #e8f7ff;
     border-color: #a3daff;
