@@ -67,6 +67,11 @@ class Ttfb_Toolkit {
         require_once( TTFB_TOOLKIT_INCLUDES . 'hooks.php' );
 
         /**
+         * load time widget
+         */
+        require_once( TTFB_TOOLKIT_INCLUDES . 'load-time/widget.php' );
+
+        /**
          * Custom HTML Control
          */
         require_once( TTFB_TOOLKIT_INCLUDES . 'controls/html-control.php' );
