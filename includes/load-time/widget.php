@@ -13,9 +13,7 @@ class Ttfb_Toolkit_Load_Time_Widget extends WP_Widget {
             __('TTFB Page Speed', 'ttfb-toolkit'), // Name
             array( 'description' => __( 'Display the current page load time.', 'ttfb-toolkit' ), ) // Args
         );
-
-        // Front script
-		add_action( 'wp_footer', array( $this, 'plugin_scripts' ) );
+        
     }
 
   /**
@@ -34,6 +32,26 @@ class Ttfb_Toolkit_Load_Time_Widget extends WP_Widget {
         }
 
         echo '<div class="ttfb-loaded"></div>';
+    ?>
+        <script>
+            window.onload = function(){
+                setTimeout(function(){
+                window.performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {};
+                var t = performance.timing || {};
+                if (!t) {
+                    return;
+                }
+                var start = t.navigationStart,
+                    end = t.loadEventEnd
+                    loadTime = (end - start) / 1000;
+                var divPlaceholder = document.getElementsByClassName('ttfb-loaded');
+                if( divPlaceholder[0] ){
+                    divPlaceholder[0].innerHTML += '<span class="loaded"><?php esc_html_e("This page loaded in","ttfb-toolkit"); ?> <strong>' + loadTime + ' <?php esc_html_e("seconds","ttfb-toolkit"); ?></strong>.</span>';
+                }
+                }, 0); 
+            }
+        </script>
+    <?php
     
     echo $args['after_widget'];
   }
@@ -74,32 +92,6 @@ class Ttfb_Toolkit_Load_Time_Widget extends WP_Widget {
         $lttfb_toolkit_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
         return $lttfb_toolkit_instance;
-    }
-
-    /**
-    * Inject the small script
-    */
-    public function plugin_scripts() {
-    ?>
-    <script>
-        window.onload = function(){
-            setTimeout(function(){
-            window.performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {};
-            var t = performance.timing || {};
-            if (!t) {
-                return;
-            }
-            var start = t.navigationStart,
-                end = t.loadEventEnd
-                loadTime = (end - start) / 1000;
-            var div = document.getElementsByClassName('ttfb-loaded');
-            if( div ){
-                div[0].innerHTML += '<span class="loaded"><?php esc_html_e("This page loaded in","ttfb-toolkit"); ?> <strong>' + loadTime + ' <?php esc_html_e("seconds","ttfb-toolkit"); ?></strong>.</span>';
-            }
-            }, 0); 
-        }
-    </script>
-    <?php
     }
 
 } // class Ttfb_Toolkit_Load_Time_Widget
