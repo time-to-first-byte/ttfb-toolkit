@@ -7,8 +7,6 @@
     display: flex;
     border-left: 6px solid #3a3a3a;
     max-width: 768px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .alert{
@@ -19,13 +17,11 @@
     background-color: #eee;
 }
 
-.alert_shortcode .icon_box{ 
-    border-radius: 4px 0 0 4px;
+.alert_shortcode .icon_box{
     padding: 1.5rem 1rem;
 }
 
 .alert_shortcode .content_box{ 
-    border-radius: 0 4px 4px 0;
     padding: 1.5rem 1rem;
 }
 
