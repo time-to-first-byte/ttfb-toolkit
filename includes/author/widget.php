@@ -24,6 +24,11 @@ class Ttfb_Toolkit_Author_Widget extends WP_Widget {
    * @param array $instance Saved values from database.
    */
   public function widget( $args, $instance ) {
+
+    if( !is_page() && !is_single() ){
+        return;
+    }
+
     echo $args['before_widget'];
     if ( !empty($instance['title']) ) {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];

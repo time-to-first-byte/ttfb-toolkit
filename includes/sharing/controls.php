@@ -15,142 +15,74 @@ function ttfb_toolkit_customizer_sharing( $wp_customize ) {
         'panel'		 => 'ttfb_options',
         'capability' => 'edit_theme_options',
     ) );
-    
-    /*
-    * Sharing label 
-    */
-    $wp_customize->add_setting( 'ttfb_toolkit_sharing[label]', array(
-        'default' => '',
-        'type' => 'option',
-        'capability' => 'edit_theme_options',
-    ) );
-    
-    $wp_customize->add_control( 'ttfb_toolkit_sharing[label]', array(
-        'type' => 'text',
-        'priority' => 10,
-        'section' => 'ttfb_toolkit_sharing',
-        'label' => __( 'Sharing label', 'ttfb-toolkit' ),
-    ) );
 
     /*
     * Sharing networks 
     */
-    $wp_customize->add_setting( 'ttfb_toolkit_sharing[platform][facebook]', array(
+    $wp_customize->add_setting( 'ttfb_toolkit_sharing[disabled][facebook]', array(
         'default' => '',
         'type' => 'option',
         'capability' => 'edit_theme_options',
     ) );
     
-    $wp_customize->add_control( 'ttfb_toolkit_sharing[platform][facebook]', array(
+    $wp_customize->add_control( 'ttfb_toolkit_sharing[disabled][facebook]', array(
         'type' => 'checkbox',
         'priority' => 20,
         'section' => 'ttfb_toolkit_sharing',
-        'label'       => __( 'Facebook', 'minimall' ),
+        'label'       => __( 'Disable Facebook share', 'minimall' ),
     ) );
 
-    $wp_customize->add_setting( 'ttfb_toolkit_sharing[platform][twitter]', array(
+    $wp_customize->add_setting( 'ttfb_toolkit_sharing[disabled][twitter]', array(
         'default' => '',
         'type' => 'option',
         'capability' => 'edit_theme_options',
     ) );
     
-    $wp_customize->add_control( 'ttfb_toolkit_sharing[platform][twitter]', array(
+    $wp_customize->add_control( 'ttfb_toolkit_sharing[disabled][twitter]', array(
         'type' => 'checkbox',
         'priority' => 20,
         'section' => 'ttfb_toolkit_sharing',
-        'label'       => __( 'Twitter', 'minimall' ),
+        'label'       => __( 'Disable Twitter share', 'minimall' ),
     ) );
 
-    $wp_customize->add_setting( 'ttfb_toolkit_sharing[platform][google]', array(
+    $wp_customize->add_setting( 'ttfb_toolkit_sharing[disabled][google]', array(
         'default' => '',
         'type' => 'option',
         'capability' => 'edit_theme_options',
     ) );
     
-    $wp_customize->add_control( 'ttfb_toolkit_sharing[platform][google]', array(
+    $wp_customize->add_control( 'ttfb_toolkit_sharing[disabled][google]', array(
         'type' => 'checkbox',
         'priority' => 20,
         'section' => 'ttfb_toolkit_sharing',
-        'label'       => __( 'Google', 'minimall' ),
+        'label'       => __( 'Disable Google+ share', 'minimall' ),
     ) );
 
-    $wp_customize->add_setting( 'ttfb_toolkit_sharing[platform][linkedin]', array(
+    $wp_customize->add_setting( 'ttfb_toolkit_sharing[disabled][linkedin]', array(
         'default' => '',
         'type' => 'option',
         'capability' => 'edit_theme_options',
     ) );
     
-    $wp_customize->add_control( 'ttfb_toolkit_sharing[platform][linkedin]', array(
+    $wp_customize->add_control( 'ttfb_toolkit_sharing[disabled][linkedin]', array(
         'type' => 'checkbox',
         'priority' => 20,
         'section' => 'ttfb_toolkit_sharing',
-        'label'       => __( 'Linkedin', 'minimall' ),
+        'label'       => __( 'Disable Linkedin share', 'minimall' ),
     ) );
 
-    $wp_customize->add_setting( 'ttfb_toolkit_sharing[platform][pinterest]', array(
+    $wp_customize->add_setting( 'ttfb_toolkit_sharing[disabled][pinterest]', array(
         'default' => '',
         'type' => 'option',
         'capability' => 'edit_theme_options',
     ) );
     
-    $wp_customize->add_control( 'ttfb_toolkit_sharing[platform][pinterest]', array(
+    $wp_customize->add_control( 'ttfb_toolkit_sharing[disabled][pinterest]', array(
         'type' => 'checkbox',
         'priority' => 20,
         'section' => 'ttfb_toolkit_sharing',
-        'label'       => __( 'Pinterrest', 'minimall' ),
-    ) );
-
-    /*
-    * Sharing append 
-    */
-    $wp_customize->add_setting( 'ttfb_toolkit_sharing[append]', array(
-        'default' => '',
-        'type' => 'option',
-        'capability' => 'edit_theme_options',
-    ) );
-    
-    $wp_customize->add_control( 'ttfb_toolkit_sharing[append]', array(
-        'type' => 'select',
-        'priority' => 50,
-        'section' => 'ttfb_toolkit_sharing',
-        'label'       => __( 'Automatically append', 'minimall' ),
-        'description' => __( 'Automatically append social share module to content. A widget is also available.', 'minimall' ),
-        'choices'     => array(
-            'none' => esc_attr__( 'None', 'minimall' ),
-            'top' => esc_attr__( 'At the top', 'minimall' ),
-            'bottom' => esc_attr__( 'At the bottom', 'minimall' ),
-            'both' => esc_attr__( 'Both', 'minimall' ),
-        ),
-    ) );
-
-    /*
-    * Sharing append location
-    */
-    $wp_customize->add_setting( 'ttfb_toolkit_sharing[append_to]', array(
-        'default' => '',
-        'type' => 'option',
-        'capability' => 'edit_theme_options',
-    ) );
-    
-    $wp_customize->add_control( 'ttfb_toolkit_sharing[append_to]', array(
-        'type' => 'select',
-        'priority' => 60,
-        'section' => 'ttfb_toolkit_sharing',
-        'label' => __( 'Append to', 'ttfb-toolkit' ),
-        'choices'     => array(
-            'all' => esc_attr__( 'Pages and Posts', 'minimall' ),
-            'posts' => esc_attr__( 'Posts only', 'minimall' ),
-            'pages' => esc_attr__( 'Pages only', 'minimall' ),
-        ),
-        'active_callback' => 'ttfb_toolkit_sharing_auto_append',
+        'label'       => __( 'Disable Pinterrest share', 'minimall' ),
     ) );
 
 }
 
-function ttfb_toolkit_sharing_auto_append( $control ) {
-    if ( $control->manager->get_setting('ttfb_toolkit_sharing[append]')->value() != 'none' ) {
-        return true;
-    } else {
-        return false;
-    }
-}
