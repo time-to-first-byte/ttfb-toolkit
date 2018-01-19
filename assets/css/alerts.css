@@ -6,7 +6,6 @@
     display: -ms-flexbox;
     display: flex;
     border-left: 6px solid #3a3a3a;
-    max-width: 768px;
 }
 
 .alert{
@@ -21,7 +20,7 @@
     padding: 1.5rem 1rem;
 }
 
-.alert_shortcode .content_box{ 
+.alert_shortcode .content_box{
     padding: 1.5rem 1rem;
 }
 
