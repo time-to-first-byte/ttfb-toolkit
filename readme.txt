@@ -5,7 +5,7 @@ Tags: widgets, icons, share, performance, speed
 License: GPLv2 or later
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,14 @@ All options are located in the WordPress Customizer. Check out your theme's help
 The TTFB Toolkit was developed to extend the functionality of TTFB themes specifically. It will not work with other themes out of the box.
 
 ==Changelog==
-= v1.2 - January 9, 2017 =
+= v1.3 - January 19, 2018 =
+* New Feature - Current page speed widgets
+* New Feature - Before posts sidebar
+* New Feature - Before pages sidebar
+* Tweak - Deprecating the auto-append sharing
+* Tweak - Alerts for better Gutenberg compatibility
+
+= v1.2 - January 9, 2018 =
 * New Feature - Debug performance panel
 * New Feature - Address Widget
 * New Feature - Social Widget
