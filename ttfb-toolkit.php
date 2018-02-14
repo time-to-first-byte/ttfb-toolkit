@@ -120,6 +120,11 @@ class Ttfb_Toolkit {
          * Performance Debug
          */
         require_if_theme_supports( 'ttfb_toolkit_debug_widget', TTFB_TOOLKIT_INCLUDES . 'debug/performance-debug.php' );
+
+        /**
+         * Gutenberg Modules
+         */
+        require_once( TTFB_TOOLKIT_INCLUDES . 'gutenberg/gutenberg.php' );
     }
 
     /**
