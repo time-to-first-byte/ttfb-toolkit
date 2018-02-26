@@ -3,7 +3,7 @@
 Plugin Name:       TTFB Toolkit
 Plugin URI:        https://github.com/time-to-first-byte/ttfb-toolkit
 Description:       The TTFB Toolkit extends functionality to TTFB Themes, providing Font Awesome icons, alerts and more.
-Version:           1.3
+Version:           1.4
 Author:            TTFB
 */
 
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit();
 
 
 // Toolkit version
-define( 'TTFB_TOOLKIT_VERSION', '1.3' );
+define( 'TTFB_TOOLKIT_VERSION', '1.4' );
 
 // Toolkit root directory
 define( 'TTFB_TOOLKIT_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
@@ -51,7 +51,10 @@ class Ttfb_Toolkit {
         register_activation_hook( __FILE__ , array( $this, 'toolkit_activation' ) );
         
         // Front script
-		add_action( 'wp_enqueue_scripts', array( $this, 'plugin_scripts' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'plugin_scripts' ) );
+        
+        // Front stylesheets
+		add_action( 'wp_enqueue_scripts', array( $this, 'plugin_stylesheets' ) );
 
     }
 
@@ -146,6 +149,15 @@ class Ttfb_Toolkit {
     function plugin_scripts() {
         // Load no matter what because the script used for hero images
         wp_enqueue_script( 'ttfb-toolkit-lazysizes', TTFB_TOOLKIT_URI . 'vendor/lazysizes/lazysizes-all.min.js', '', '', true );
+    }
+
+    /**
+	 * Add plugin stylesheets
+	 *
+	 * @since 1.4
+	 */
+    function plugin_stylesheets() {
+        wp_enqueue_style( 'ttfb-toolkit-basscss', TTFB_TOOLKIT_URI . 'assets/css/basscss.css' );
     }
     
 }
