@@ -12,7 +12,7 @@ function ttfb_toolkit_customizer_font_awesome( $wp_customize ) {
     $wp_customize->add_section( 'ttfb_toolkit_fa', array(
         'title'      => esc_attr__( 'Font Awesome Icons', 'ttfb-toolkit' ),
         'priority'   => 210,
-        'panel'		 => 'ttfb_options',
+        'panel'		 => 'ttfb_toolkit_panel',
         'capability' => 'edit_theme_options',
     ) );
 

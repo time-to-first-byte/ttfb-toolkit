@@ -13,7 +13,7 @@ function ttfb_toolkit_customizer_alerts( $wp_customize ) {
     $wp_customize->add_section( 'ttfb_toolkit_alerts', array(
         'title'      => esc_attr__( 'Alerts', 'ttfb-toolkit' ),
         'priority'   => 200,
-        'panel'		 => 'ttfb_options',
+        'panel'		 => 'ttfb_toolkit_panel',
         'capability' => 'edit_theme_options',
     ) );
 
