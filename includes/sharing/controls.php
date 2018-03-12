@@ -12,7 +12,7 @@ function ttfb_toolkit_customizer_sharing( $wp_customize ) {
     $wp_customize->add_section( 'ttfb_toolkit_sharing', array(
         'title'      => esc_attr__( 'Sharing', 'ttfb-toolkit' ),
         'priority'   => 210,
-        'panel'		 => 'ttfb_options',
+        'panel'		 => 'ttfb_toolkit_panel',
         'capability' => 'edit_theme_options',
     ) );
 

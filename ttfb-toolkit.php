@@ -65,19 +65,31 @@ class Ttfb_Toolkit {
      */
     function includes() {
         /**
-         * Custom HTML Control
+         * Plugin's hook
          */
         require_once( TTFB_TOOLKIT_INCLUDES . 'hooks.php' );
+
+        /**
+         * plugin's Panel
+         */
+        require_once( TTFB_TOOLKIT_INCLUDES . 'customizer/panel.php' );
+
+        /**
+         * Custom HTML Control
+         */
+        require_once( TTFB_TOOLKIT_INCLUDES . 'customizer/html-control.php' );
 
         /**
          * load time widget
          */
         require_once( TTFB_TOOLKIT_INCLUDES . 'load-time/widget.php' );
 
+        
+
         /**
-         * Custom HTML Control
+         * ScrollTo plugin
          */
-        require_once( TTFB_TOOLKIT_INCLUDES . 'controls/html-control.php' );
+        require_once( TTFB_TOOLKIT_INCLUDES . 'scrolltop/scrolltop.php' );
 
         /**
          * Alerts
