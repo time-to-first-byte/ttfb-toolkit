@@ -39,22 +39,19 @@ class Ttfb_Toolkit_Author_Widget extends WP_Widget {
 
     $display_name = get_the_author_meta( 'display_name', $post->post_author );
 
-    if ( empty( $display_name ) )
-    $display_name = get_the_author_meta( 'nickname', $post->post_author );
-
-    $user_description = get_the_author_meta( 'user_description', $post->post_author );
-
-    $user_avatar = get_avatar( get_the_author_meta('user_email') , 75 );    
-    
+    if ( empty( $display_name ) ){
+      $display_name = get_the_author_meta( 'nickname', $post->post_author );
+    }
+  
     ?>
     <div class="flex items-center">
-        <div class="mr2">
-            <?php echo $user_avatar; ?>
+        <div class="mr2 widget-author-avatar" style="min-width: 75px">
+            <?php echo get_avatar( get_the_author_meta('user_email') , 75 ); ?>
         </div>
 
         <p class="m0">
-            <strong class="caps"><?php echo esc_html__("About","minimal"); ?> <?php echo $display_name; ?></strong><br>
-            <?php echo nl2br( $user_description ); ?>
+            <strong class="caps widget-author-name"><?php echo esc_html__("About","ttfb-toolkit"); ?> <?php echo $display_name; ?></strong><br>
+            <?php echo nl2br( get_the_author_meta( 'user_description', $post->post_author ) ); ?>
         </p>
     </div>
 
