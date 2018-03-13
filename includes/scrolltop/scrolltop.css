@@ -10,7 +10,6 @@
     text-align: center;
     text-rendering: optimizeLegibility;
     transition: opacity .3s ease-in-out;
-    
     z-index: 7000;
     height: 3rem;
     width: 3rem;
