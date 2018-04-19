@@ -32,6 +32,8 @@ All options are located in the WordPress Customizer. Check out your theme's help
 The TTFB Toolkit was developed to extend the functionality of TTFB themes specifically. It will not work with other themes out of the box.
 
 ==Changelog==
+= v1.5.1 - April 19, 2018 =
+* Fix - Fix blured Gutenberg images
 = v1.5 - March 13, 2018 =
 * Fix - Author widget's avatar width
 * New Feature - Scroll to top button
