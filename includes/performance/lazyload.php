@@ -139,7 +139,7 @@ function ttfb_toolkit_lazy_load_image( $content ){
             $img->setAttribute('data-size', "auto");
         
             // remove sizes
-            $img->removeAttribute('sizes');
+            //$img->removeAttribute('sizes');
     
             // src
             if($img->hasAttribute('src')){
