@@ -130,16 +130,15 @@ function ttfb_toolkit_lazy_load_image( $content ){
         return;
     }
 
-
+    /*
+    * Regular <img> tags
+    */
     $imgs = $document->getElementsByTagName('img');
     foreach ($imgs as $img) {
 
         if( !$img->hasAttribute('data-src') ){
             // add data-sizes
             $img->setAttribute('data-size', "auto");
-        
-            // remove sizes
-            //$img->removeAttribute('sizes');
     
             // src
             if($img->hasAttribute('src')){
@@ -187,6 +186,8 @@ function ttfb_toolkit_lazy_load_image( $content ){
     
     return $html_fragment;
 }
+
+
 
 /**
  * Replace iframes by LazyLoad
