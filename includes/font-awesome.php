@@ -120,23 +120,23 @@ function ttfb_toolkit_font_awesome_font_awesome_scripts() {
         $librairy = get_option('ttfb_toolkit_fa_librairy', 'solid');
 
         if( $brands == 1 && $librairy != 'all' ){
-            wp_enqueue_script( 'fontawesome-brands', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/fa-brands.min.js', array(), '1.0.0', true );
+            wp_enqueue_script( 'fontawesome-brands', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/brands.js', array(), '1.0.0', true );
         }
     
         if( $librairy == 'solid' ){
-            wp_enqueue_script( 'fontawesome-solid', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/fa-solid.min.js', array(), '1.0.0', true );
+            wp_enqueue_script( 'fontawesome-solid', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/solid.js', array(), '1.0.0', true );
         }elseif( $librairy == 'regular' ){
-            wp_enqueue_script( 'fontawesome-regular', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/fa-regular.min.js', array(), '1.0.0', true );
+            wp_enqueue_script( 'fontawesome-regular', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/regular.js', array(), '1.0.0', true );
         }elseif( $librairy == 'all' ){
-            wp_enqueue_script( 'fontawesome-all', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/fontawesome-all.min.js', array(), '1.0.0', true );
+            wp_enqueue_script( 'fontawesome-all', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/fontawesome-all.js', array(), '1.0.0', true );
         }
     
         if( $shims == 1 ){
-            wp_enqueue_script( 'fontawesome-v4-shim', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/v4-shims.min.js', array(), '1.0.0', true );
+            wp_enqueue_script( 'fontawesome-v4-shim', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/v4-shims.js', array(), '1.0.0', true );
         }
         
         if( $librairy != 'all' ){
-            wp_enqueue_script( 'fontawesome-core', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/fontawesome.min.js', array(), '1.0.0', true );
+            wp_enqueue_script( 'fontawesome-core', plugin_dir_url( __FILE__ ) . '../vendor/fontawesome/fontawesome.js', array(), '1.0.0', true );
         }
     }
 
