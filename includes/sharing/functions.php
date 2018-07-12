@@ -8,7 +8,7 @@ function ttfb_toolkit_sharing_get_markup(){
     
     $content = '';
     
-    $content .= '<div class="social-share-btns hide-print max-width-3 ml-auto mr-auto m0">';
+    $content .= '<div class="social-share-btns hide-print m0">';
 
     if( empty( $share_options['disabled']['facebook'] ) ){
         $content .= '<a target="_blank" rel="noopener noreferrer nofollow" href="http://www.facebook.com/sharer.php?u=' . get_permalink() . '&t=' . urlencode( get_the_title() ) . '" class="mb1 mr1 inline-flex items-center share-btn share-btn-facebook"><svg class="mr1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" xml:space="preserve" width="16" height="16"><g class="" fill="#ffffff"><path fill="#ffffff" d="M6.02293,16L6,9H3V6h3V4c0-2.6992,1.67151-4,4.07938-4c1.15339,0,2.14468,0.08587,2.43356,0.12425v2.82082 l-1.66998,0.00076c-1.30953,0-1.56309,0.62227-1.56309,1.53541V6H13l-1,3H9.27986v7H6.02293z"></path></g></svg> ' . esc_html__("Share","minimall") . '</a>';

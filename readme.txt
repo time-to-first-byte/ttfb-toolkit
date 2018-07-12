@@ -5,7 +5,7 @@ Tags: widgets, icons, share, performance, speed
 License: GPLv2 or later
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.5
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,9 @@ All options are located in the WordPress Customizer. Check out your theme's help
 The TTFB Toolkit was developed to extend the functionality of TTFB themes specifically. It will not work with other themes out of the box.
 
 ==Changelog==
+= v1.5.2 - Jul 11, 2018 =
+* Update Font Awesome to 5.1.0
+* Tweak sharing widget CSS
 = v1.5.1 - April 19, 2018 =
 * Fix - Fix blured Gutenberg images
 = v1.5 - March 13, 2018 =
