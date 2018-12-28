@@ -35,6 +35,7 @@ function ttfb_toolkit_performance_panel_styles() { ?>
 	<?php
 }
 
+
 /**
  * Lazy Load for image and iframe
  */
@@ -54,6 +55,11 @@ require 'preload.php';
  * Options Metabox
  */
 require 'metabox-options.php';
+
+/**
+ * Files Optimisations
+ */
+require_if_theme_supports("ttfb_toolkit_optimizations", TTFB_TOOLKIT_INCLUDES . 'performance/optimizations.php');
 
 
 

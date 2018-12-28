@@ -135,6 +135,11 @@ class Ttfb_Toolkit {
          * Performance Debug
          */
         require_if_theme_supports( 'ttfb_toolkit_debug_widget', TTFB_TOOLKIT_INCLUDES . 'debug/performance-debug.php' );
+
+        /**
+         * Jet Pack Testimonials slider
+         */
+        require_if_theme_supports( 'ttfb_toolkit_testimonials', TTFB_TOOLKIT_INCLUDES . 'testimonials/testimonials.php' );
     }
 
     /**
@@ -159,8 +164,7 @@ class Ttfb_Toolkit {
 	 * @since 1.0.0
 	 */
     function plugin_scripts() {
-        // Load no matter what because the script used for hero images
-        wp_enqueue_script( 'ttfb-toolkit-lazysizes', TTFB_TOOLKIT_URI . 'vendor/lazysizes/lazysizes-all.min.js', '', '', true );
+  
     }
 
     /**

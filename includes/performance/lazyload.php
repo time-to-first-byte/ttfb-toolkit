@@ -54,47 +54,73 @@ function ttfb_toolkit_customizer_performance_lazyload( $wp_customize ) {
     ) );
 }
 
-/*
-* AMP Detection
-*/
-add_action( 'wp', 'ttfb_toolkit_lazyload_disable_on_amp' );
-function ttfb_toolkit_lazyload_disable_on_amp() {
-	if ( defined( 'AMP_QUERY_VAR' ) && function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
-		add_filter( 'do_ttfb_toolkit_lazyload', '__return_false' );
+/**
+ * Main function. Runs everything.
+ */
+function ttfb_toolkit_lazyload_lazyload_images() {
+
+    // If this is the admin page, do nothing.
+    if ( is_admin() ) {
+        return;
+    }
+
+    // If the Jetpack Lazy-Images module is active, do nothing.
+	if ( ! apply_filters( 'lazyload_is_enabled', true ) ) {
+		return;
+    }
+    
+    // if this is a rest output, do nothing.
+    if ( ttfb_toolkit_is_rest() ) {
+        return;
+    }
+
+    // Don't lazyload for feeds, previews.
+	if ( is_feed() || is_preview() ) {
+		return;
 	}
+
+	add_action( 'wp_head', 'ttfb_toolkit_lazyload_setup_filters', PHP_INT_MAX );
+	add_action( 'wp_enqueue_scripts', 'ttfb_toolkit_lazyload_enqueue_assets' );
+
+	// Do not lazy load avatar in admin bar.
+	add_action( 'admin_bar_menu', 'ttfb_toolkit_lazyload_remove_filters', 0 );
+    
+    // include picturefill for old browsers
+    add_action("wp_head","ttfb_toolkit_lazyload_picturefill");
+
+}
+add_action( 'wp', 'ttfb_toolkit_lazyload_lazyload_images' );
+
+/**
+ * Setup filters to enable lazy-loading of images.
+ */
+function ttfb_toolkit_lazyload_setup_filters() {
+    // images
+	add_filter( 'get_avatar'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX  );
+    add_filter( 'the_content'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
+    add_filter( 'widget_text'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
+    add_filter( 'get_image_tag'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
+    add_filter( 'post_thumbnail_html'	, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
+
+    // iframe
+    add_filter( 'the_content', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
+    add_filter( 'widget_text', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
 }
 
-/*
-* Rest API Detection
-*/
-function ttfb_toolkit_is_rest() {
-    return ( defined( 'REST_REQUEST' ) && REST_REQUEST );
-}
+/**
+ * Remove filters for images that should not be lazy-loaded.
+ */
+function ttfb_toolkit_lazyload_remove_filters() {
+	// images
+	remove_filter( 'get_avatar'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX  );
+    remove_filter( 'the_content'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
+    remove_filter( 'widget_text'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
+    remove_filter( 'get_image_tag'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
+    remove_filter( 'post_thumbnail_html'	, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
 
-/*
-* Detect on page lazyload disabled for image
-*/
-add_action('wp', 'ttfb_toolkit_on_page_lazyload_image_disabled');
-function ttfb_toolkit_on_page_lazyload_image_disabled(){
-    if( !is_page() && !is_single() ){ return; }
-
-    global $post;
-    if( is_object( $post ) && get_post_meta($post->ID, 'ttfb_toolkit_options_disable_image_lazy_load', true) ){
-        add_filter( 'do_ttfb_toolkit_lazyload_image', '__return_false' ); 
-    }
-}
-
-/*
-* Detect on page lazyload disabled for iframe
-*/
-add_action('wp', 'ttfb_toolkit_on_page_lazyload_iframe_disabled');
-function ttfb_toolkit_on_page_lazyload_iframe_disabled(){
-    if( !is_page() && !is_single() ){ return; }
-
-    global $post;
-    if( is_object( $post ) && get_post_meta($post->ID, 'ttfb_toolkit_options_disable_iframe_lazy_load', true) ){
-        add_filter( 'do_ttfb_toolkit_lazyload_iframe', '__return_false' ); 
-    }
+    // iframe
+    remove_filter( 'the_content', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
+    remove_filter( 'widget_text', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
 }
 
 /**
@@ -103,17 +129,15 @@ function ttfb_toolkit_on_page_lazyload_iframe_disabled(){
  * @package perfthemes
  * @since 1.0
  */
-add_filter( 'get_avatar'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
-add_filter( 'the_content'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
-add_filter( 'widget_text'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
-add_filter( 'get_image_tag'			, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
-add_filter( 'post_thumbnail_html'	, 'ttfb_toolkit_lazy_load_image', PHP_INT_MAX );
 function ttfb_toolkit_lazy_load_image( $content ){
 
-    if ( ! get_option('ttfb_toolkit_perf_lazyload_img', false) || 
-            ! apply_filters( 'do_ttfb_toolkit_lazyload_image', true ) ||
-            is_admin() ||
-            ttfb_toolkit_is_rest() ) {
+    // If lazy load is not active, do nothing.
+    if ( ! get_option('ttfb_toolkit_perf_lazyload_img', false) ) {
+        return $content;
+    }
+
+    // if lazy load is disabled on the page, do nothing.
+    if (  ! apply_filters( 'do_ttfb_toolkit_lazyload_image', true ) ) {
         return $content;
     }
     
@@ -136,7 +160,11 @@ function ttfb_toolkit_lazy_load_image( $content ){
     $imgs = $document->getElementsByTagName('img');
     foreach ($imgs as $img) {
 
-        if( !$img->hasAttribute('data-src') ){
+        $existing_class = $img->getAttribute('class');
+
+        if( !$img->hasAttribute('data-src') && 
+            strpos($existing_class, 'no-lazy') != true 
+        ){
             // add data-sizes
             $img->setAttribute('data-size', "auto");
     
@@ -164,10 +192,27 @@ function ttfb_toolkit_lazy_load_image( $content ){
             }
     
             // Set Lazyload Class
-            $existing_class = $img->getAttribute('class');
             $img->setAttribute('class', "lazyload $existing_class");
-    
-    
+
+            // Boucer Loader only for entry-content images
+            /*if( strpos($existing_class, 'wp-image-') !== false ){
+                $loader = $document->createElement('div');
+                $firstSibling = $img->parentNode->firstChild;
+                if( $loader !== $firstSibling ) {
+                    //$img->parentNode->insertBefore( $loader, $firstSibling );
+                    $img->parentNode->insertBefore($loader, $img->nextSibling);
+
+                    $loader->setAttribute('class', "bouncing-loader");
+                    $loaderchild1 = $document->createElement('div');
+                    $loaderchild2 = $document->createElement('div');
+                    $loaderchild3 = $document->createElement('div');
+                    $loader->appendChild($loaderchild1);
+                    $loader->appendChild($loaderchild2);
+                    $loader->appendChild($loaderchild3);
+                }
+            }*/
+            
+            
             // noscript
             $noscript = $document->createElement('noscript');
             $img->parentNode->insertBefore($noscript);
@@ -192,47 +237,85 @@ function ttfb_toolkit_lazy_load_image( $content ){
 /**
  * Replace iframes by LazyLoad
  */
-add_filter( 'the_content', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
-add_filter( 'widget_text', 'ttfb_toolkit_lazyload_iframes', PHP_INT_MAX );
-function ttfb_toolkit_lazyload_iframes( $html ) {
+function ttfb_toolkit_lazyload_iframes( $content ) {
 
-    if ( ! get_option('ttfb_toolkit_perf_lazyload_iframe', false) || 
-        ! apply_filters( 'do_ttfb_toolkit_lazyload_iframe', true ) ||
-        is_search() ||
-        is_admin() ||
-        ttfb_toolkit_is_rest() ) {
-    return $html;
+    // If lazy load is not active, do nothing.
+    if ( ! get_option('ttfb_toolkit_perf_lazyload_iframe', false) ) {
+        return $content;
     }
 
-    $matches = array();
-    preg_match_all( '/<iframe\s+.*?>/', $html, $matches );
+    // if lazy load is disabled on the page, do nothing.
+    if (  ! apply_filters( 'do_ttfb_toolkit_lazyload_iframe', true ) ) {
+        return $content;
+    }
 
-    foreach ( $matches[0] as $k=>$iframe ) {
+    global $post;
 
+    
+    $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+    $document = new DOMDocument();
+
+    libxml_use_internal_errors(true);
+    if( !empty($content) ){
+        $document->loadHTML(utf8_decode($content));
+    }else{
+        return;
+    }
+
+    /*
+    * Regular <iframe> tags
+    */
+    $iframes = $document->getElementsByTagName('iframe');
+    foreach ($iframes as $iframe) {
         
-        if ( strpos( $iframe, 'gform_ajax_frame' ) || // Don't mess with the Gravity Forms ajax iframe
-        strpos( $iframe, 'data-src' ) ) { // Don't mess with already lazy iframe
-            continue;
+        if( !$iframe->hasAttribute('data-src') ){
+            // add data-sizes
+            $iframe->setAttribute('data-size', "auto");
+    
+            
+            if($iframe->hasAttribute('src')){
+                // src
+                $existing_src = $iframe->getAttribute('src');
+                $iframe->setAttribute('src', "data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=");
+    
+                $iframe->setAttribute('data-src', $existing_src);
+
+                // Set Lazyload Class
+                $existing_class = $iframe->getAttribute('class');
+                $iframe->setAttribute('class', "lazyload $existing_class");
+
+                // noscript
+                $noscript = $document->createElement('noscript');
+                $firstSibling = $iframe->parentNode->firstChild;
+                if( $noscript !== $firstSibling ) {
+                    $iframe->parentNode->insertBefore($noscript, $iframe->nextSibling);
+
+  
+                    $frame = $document->createElement('iframe');
+                    $frame->setAttribute('data-src', "");
+                    $frame->setAttribute('src', $existing_src);
+                    $noscript->appendChild($frame);
+                }
+
+            }
+    
+            
+    
         }
 
-        $placeholder = 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=';
-
-        $iframe = preg_replace( '/<iframe(.*?)src=/is', '<iframe$1src="' . $placeholder . '" class="lazyload" data-src=', $iframe );
-
-        $html = str_replace( $matches[0][ $k ], $iframe, $html );
-
     }
-	
 
-    return $html;
+    $html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $document->saveHTML()));
+    
+    return $html_fragment;
 }
 
 
-add_action("wp_head","ttfb_toolkit_lazyload_picturefill");
+
 function ttfb_toolkit_lazyload_picturefill(){
 ?>
 <script>
-    // Lazyload picturefill
+/* lasysizes picturefill */ 
     function ttfb_toolkit_loadJS(u){var r=document.getElementsByTagName("script")[ 0 ],s=document.createElement("script");s.src=u;r.parentNode.insertBefore(s,r);}
     if (!window.HTMLPictureElement || document.msElementsFromPoint) {
         ttfb_toolkit_loadJS('<?php echo TTFB_TOOLKIT_URI . "vendor/lazysizes/plugins/respimg/ls.respimg.min.js"; ?>');
@@ -240,3 +323,12 @@ function ttfb_toolkit_lazyload_picturefill(){
 </script>
 <?php
 }
+
+/**
+ * Enqueue and defer lazyload script.
+ */
+function ttfb_toolkit_lazyload_enqueue_assets() {
+	wp_enqueue_script( 'ttfb-toolkit-lazysizes', TTFB_TOOLKIT_URI . 'vendor/lazysizes/lazysizes-all.min.js', '', '', false );
+	wp_script_add_data( 'ttfb-toolkit-lazysizes', 'defer', true );
+}
+
