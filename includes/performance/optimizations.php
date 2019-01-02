@@ -70,7 +70,7 @@ function ttfb_toolkit_customizer_performance_optimizations( $wp_customize ) {
     
     // Critical CSS Controls
     $wp_customize->add_setting( 'ttfb_toolkit_perf_css_critical', array(
-        'default' => 'push',
+        'default' => 'none',
         'type' => 'option',
         'capability' => 'edit_theme_options',
     ) );
@@ -82,11 +82,12 @@ function ttfb_toolkit_customizer_performance_optimizations( $wp_customize ) {
         'label' => __( 'Critical CSS', 'ttfb' ),
         'description' => __('Default to http/2 server push. <a href="https://www.smashingmagazine.com/2017/04/guide-http2-server-push/" target="_blank">Read more about server push</a>.'),
         'choices'  => array(
-			'push'  => 'HTTP/2 Server Push',
+            'push-stylesheet'  => 'HTTP/2 Server Push - the the theme stylesheet',
+            'push-critical'  => 'HTTP/2 Server Push - critical css',
             'inline' => 'Inline Critical CSS',
             'none' => 'None'
         ),
-        'active_callback' => 'ttfb_toolkit_active_css_optimizations',
+        //'active_callback' => 'ttfb_toolkit_active_css_optimizations',
     ) );
 
 }
@@ -166,11 +167,11 @@ add_action('wp_print_styles', function() {
 
     // Variables
     global $wp_scripts, $wp_styles;
-    $exluded_styles = array("admin-bar");
+    $exluded_styles = array("admin-bar", "critical");
     $queued_styles  = $wp_styles->queue;
 
     // If server push activated, exclude the main stylesheet
-    if( get_option("ttfb_toolkit_perf_css_critical", false) === "push" ){
+    if( get_option("ttfb_toolkit_perf_css_critical", false) === "push-stylesheet" ){
         $exluded_styles[] = MAIN_STYLESHEET;
     }
     
