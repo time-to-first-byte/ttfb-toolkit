@@ -52,6 +52,11 @@ require 'clean.php';
 require 'preload.php';
 
 /**
+ * Prefetching module with quicklink
+ */
+require 'prefetching.php';
+
+/**
  * Options Metabox
  */
 require 'metabox-options.php';
